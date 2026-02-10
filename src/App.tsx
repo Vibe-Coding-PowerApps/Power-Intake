@@ -25,6 +25,16 @@ function App() {
   })
 
   useEffect(() => {
+    // Avoid loading Power Apps runtime during local development to prevent
+    // external network calls (the runtime attempts to contact environment APIs).
+    if (typeof window !== 'undefined') {
+      const host = window.location.hostname
+      if (host === 'localhost' || host === '127.0.0.1' || host === '::1') {
+        console.info('Skipping Power Apps context load in local development')
+        return
+      }
+    }
+
     const loadUserContext = async () => {
       try {
         const mod = await import('@microsoft/power-apps/app')
@@ -40,11 +50,11 @@ function App() {
           avatar: "/avatars/shadcn.jpg",
         })
       } catch (error) {
-        console.info("Power Apps context unavailable (running locally):", error)
+        console.info("Power Apps context unavailable:", error)
       }
     }
 
-    loadUserContext()
+    void loadUserContext()
   }, [])
 
   const path = typeof window !== 'undefined' ? (window.location.pathname.replace(/\/$/, '') || '/dashboard') : '/dashboard'

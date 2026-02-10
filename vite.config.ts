@@ -6,14 +6,20 @@ import { powerApps } from "./plugins/powerApps";
 // https://vite.dev/config/
 export default defineConfig({
   base: "./",
-  plugins: [react(), powerApps()],
+  // Enable the Power Apps vite plugin only when explicitly requested to
+  // (prevents Power Apps runtime/network calls during local dev by default).
+  plugins: [
+    react(),
+    powerApps(),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
   server: {
-    port: 5175,
+    port: 5177,
     strictPort: true,
+    host: true,
   },
 });
