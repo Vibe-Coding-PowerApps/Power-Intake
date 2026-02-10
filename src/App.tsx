@@ -57,10 +57,10 @@ function App() {
     void loadUserContext()
   }, [])
 
-  const path = typeof window !== 'undefined' ? (window.location.pathname.replace(/\/$/, '') || '/dashboard') : '/dashboard'
+  const path = typeof window !== 'undefined' ? (window.location.pathname.replace(/\/$/, '') || '/home') : '/home'
   // keep routes mapping, but listen to popstate in useEffect for reactivity
   const routes: Record<string, React.ComponentType<any>> = {
-    '/': DashboardPage,
+    '/': HomePage,
     '/dashboard': DashboardPage,
     '/home': HomePage,
     '/use-cases': UseCasesPage,
@@ -75,9 +75,13 @@ function App() {
   const [currentPath, setCurrentPath] = useState<string>(path)
 
   useEffect(() => {
-    const onPop = () => setCurrentPath((window.location.pathname || '/').replace(/\/$/, '') || '/dashboard')
-    window.addEventListener('popstate', onPop)
-    return () => window.removeEventListener('popstate', onPop)
+    const onChange = () => setCurrentPath((window.location.pathname || '/').replace(/\/$/, '') || '/dashboard')
+    window.addEventListener('popstate', onChange)
+    window.addEventListener('locationchange', onChange)
+    return () => {
+      window.removeEventListener('popstate', onChange)
+      window.removeEventListener('locationchange', onChange)
+    }
   }, [])
 
   const PageComponent = routes[currentPath] ?? DashboardPage
