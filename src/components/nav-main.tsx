@@ -1,6 +1,7 @@
 "use client"
 
-import { IconCirclePlusFilled, IconMail, type Icon } from "@tabler/icons-react"
+import * as React from "react"
+import { IconCirclePlusFilled, IconMail } from "@tabler/icons-react"
 
 import { Button } from '@/ui/button'
 import {
@@ -17,9 +18,10 @@ export function NavMain({
   items: {
     title: string
     url: string
-    icon?: Icon
+    icon?: React.ComponentType<any>
   }[]
 }) {
+  const [active, setActive] = React.useState(items[0]?.title ?? "")
   return (
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2 px-2">
@@ -45,7 +47,12 @@ export function NavMain({
         <SidebarMenu>
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton tooltip={item.title}>
+              <SidebarMenuButton
+                tooltip={item.title}
+                isActive={active === item.title}
+                className={active === item.title ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground" : undefined}
+                onClick={() => setActive(item.title)}
+              >
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
               </SidebarMenuButton>

@@ -3,24 +3,18 @@
 import * as React from "react"
 import {
   IconCamera,
-  IconChartBar,
-  IconDashboard,
   IconDatabase,
   IconFileAi,
   IconFileDescription,
   IconFileWord,
-  IconFolder,
-  IconHelp,
-  IconBuildingSkyscraper,
   IconListDetails,
-  IconReport,
-  IconSearch,
-  IconSettings,
   IconUsers,
   IconTemplate,
   IconBook,
   IconAlertCircle,
+  IconHelp,
 } from "@tabler/icons-react"
+import { LayoutDashboard } from "lucide-react"
 
 import { NavDocuments } from '@/components/nav-documents'
 import { NavMain } from '@/components/nav-main'
@@ -51,7 +45,7 @@ const data = {
     {
       title: "Dashboard",
       url: "#",
-      icon: IconChartBar,
+      icon: LayoutDashboard,
     },
     {
       title: "Use Cases",
