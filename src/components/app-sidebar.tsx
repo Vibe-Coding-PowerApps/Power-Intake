@@ -39,22 +39,22 @@ const data = {
   navMain: [
     {
       title: "Home",
-      url: "#",
+      url: "/home",
       icon: IconTemplate,
     },
     {
       title: "Dashboard",
-      url: "#",
+      url: "/dashboard",
       icon: LayoutDashboard,
     },
     {
       title: "Use Cases",
-      url: "#",
+      url: "/use-cases",
       icon: IconListDetails,
     },
     {
       title: "Team",
-      url: "#",
+      url: "/team",
       icon: IconUsers,
     },
   ],
@@ -109,34 +109,34 @@ const data = {
   navSecondary: [
     {
       title: "FAQs",
-      url: "#",
+      url: "/faqs",
       icon: IconFileDescription,
     },
     {
       title: "Resources",
-      url: "#",
+      url: "/resources",
       icon: IconFileAi,
     },
     {
       title: "Get Help",
-      url: "#",
+      url: "/get-help",
       icon: IconHelp,
     },
   ],
   documents: [
     {
       name: "Power Guide",
-      url: "#",
+      url: "https://example.com/power-guide",
       icon: IconDatabase,
     },
     {
       name: "Power Project",
-      url: "#",
+      url: "https://example.com/power-project",
       icon: IconAlertCircle,
     },
     {
       name: "Power Serve",
-      url: "#",
+      url: "https://example.com/power-serve",
       icon: IconFileWord,
     },
   ],

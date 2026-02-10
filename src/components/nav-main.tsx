@@ -4,6 +4,7 @@ import * as React from "react"
 import { IconCirclePlusFilled, IconMail } from "@tabler/icons-react"
 
 import { Button } from '@/ui/button'
+import usePath from '@/hooks/use-path'
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -21,10 +22,11 @@ export function NavMain({
     icon?: React.ComponentType<any>
   }[]
 }) {
-  const [active, setActive] = React.useState(items[0]?.title ?? "")
+  const path = usePath()
+  const activeFromPath = (url: string) => url.replace(/\/$/, '') || '/'
   return (
     <SidebarGroup>
-      <SidebarGroupContent className="flex flex-col gap-2 px-2">
+      <SidebarGroupContent className="flex flex-col gap-2">
         <SidebarMenu>
           <SidebarMenuItem className="flex items-center gap-2 group-data-[collapsible=icon]:hidden">
             <SidebarMenuButton
@@ -45,19 +47,35 @@ export function NavMain({
           </SidebarMenuItem>
         </SidebarMenu>
         <SidebarMenu>
-          {items.map((item) => (
-            <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton
-                tooltip={item.title}
-                isActive={active === item.title}
-                className={active === item.title ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground" : undefined}
-                onClick={() => setActive(item.title)}
-              >
-                {item.icon && <item.icon />}
-                <span>{item.title}</span>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
+          {items.map((item) => {
+            const isActive = activeFromPath(item.url) === (path || "/")
+            return (
+              <SidebarMenuItem key={item.title}>
+                <SidebarMenuButton
+                  asChild
+                  tooltip={item.title}
+                  isActive={isActive}
+                  className={(isActive ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground" : undefined) + " w-full"}
+                >
+                  <a
+                    href={item.url}
+                    className="flex w-full items-center gap-2"
+                    data-active={isActive}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      if (window.location.pathname !== item.url) {
+                        window.history.pushState({}, "", item.url)
+                        window.dispatchEvent(new Event('locationchange'))
+                      }
+                    }}
+                  >
+                    {item.icon && <item.icon />}
+                    <span>{item.title}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            )
+          })}
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
