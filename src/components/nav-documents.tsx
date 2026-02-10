@@ -36,16 +36,6 @@ export function NavDocuments({
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
-          <SidebarMenuItem>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="w-full justify-start h-9"
-            >
-              <IconDots className="size-4" />
-              <span>More</span>
-            </Button>
-          </SidebarMenuItem>
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>

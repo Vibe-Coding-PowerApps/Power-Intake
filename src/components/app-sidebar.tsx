@@ -18,6 +18,8 @@ import {
   IconSettings,
   IconUsers,
   IconTemplate,
+  IconBook,
+  IconAlertCircle,
 } from "@tabler/icons-react"
 
 import { NavDocuments } from '@/components/nav-documents'
@@ -52,19 +54,9 @@ const data = {
       icon: IconChartBar,
     },
     {
-      title: "Lifecycle",
+      title: "Use Cases",
       url: "#",
       icon: IconListDetails,
-    },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: IconChartBar,
-    },
-    {
-      title: "Projects",
-      url: "#",
-      icon: IconFolder,
     },
     {
       title: "Team",
@@ -106,7 +98,7 @@ const data = {
     },
     {
       title: "Prompts",
-      icon: IconFileAi,
+      icon: IconBook,
       url: "#",
       items: [
         {
@@ -122,19 +114,19 @@ const data = {
   ],
   navSecondary: [
     {
-      title: "Settings",
+      title: "FAQs",
       url: "#",
-      icon: IconSettings,
+      icon: IconFileDescription,
+    },
+    {
+      title: "Resources",
+      url: "#",
+      icon: IconFileAi,
     },
     {
       title: "Get Help",
       url: "#",
       icon: IconHelp,
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: IconSearch,
     },
   ],
   documents: [
@@ -146,7 +138,7 @@ const data = {
     {
       name: "Power Project",
       url: "#",
-      icon: IconReport,
+      icon: IconAlertCircle,
     },
     {
       name: "Power Serve",
