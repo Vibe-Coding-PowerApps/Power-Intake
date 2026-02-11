@@ -251,6 +251,7 @@ export function ChartAreaInteractive() {
               axisLine={false}
               tickMargin={8}
               minTickGap={32}
+              tick={{ fill: activeTheme === 'dark' ? '#FFFFFF' : '#0f172a' }}
               tickFormatter={(value) => {
                 const date = new Date(value)
                 return date.toLocaleDateString("en-US", {
