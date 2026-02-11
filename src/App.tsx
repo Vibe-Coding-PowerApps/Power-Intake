@@ -9,7 +9,7 @@ import UseCasesPage from './app/use-cases/page'
 import ServicesPage from './app/services/page'
 import TeamPage from './app/team/page'
 import PowerGuidePage from './app/power-guide/page'
-import PowerProjectPage from './app/power-project/page'
+import PowerInsightsPage from './app/power-insights/page'
 import PowerServePage from './app/power-serve/page'
 import FaqsPage from './app/faqs/page'
 import ResourcesPage from './app/resources/page'
@@ -43,7 +43,7 @@ function App() {
     '/use-cases': UseCasesPage,
     '/team': TeamPage,
     '/power-guide': PowerGuidePage,
-    '/power-project': PowerProjectPage,
+    '/power-insights': PowerInsightsPage,
     '/power-serve': PowerServePage,
     '/faqs': FaqsPage,
     '/resources': ResourcesPage,

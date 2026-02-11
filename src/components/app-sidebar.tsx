@@ -132,7 +132,7 @@ const data = {
   ],
   documents: [
     { name: "Power Guide", url: "https://example.com/power-guide", icon: IconLink },
-    { name: "Power Project", url: "https://example.com/power-project", icon: IconLink },
+    { name: "Power Insights", url: "https://example.com/power-insights", icon: IconLink },
     { name: "Power Serve", url: "https://example.com/power-serve", icon: IconLink },
   ],
 }
