@@ -119,12 +119,12 @@
   --sidebar-primary: 142 71% 20%;
   --sidebar-primary-foreground: 142 71% 98%;
 }
-[data-theme="amber"] {
+[data-theme="yellow"] {
   --primary: 45 100% 51%;
   --sidebar-primary: 45 100% 20%;
   --sidebar-primary-foreground: 45 100% 98%;
 }
-[data-theme="rose"] {
+[data-theme="red"] {
   --primary: 340 82% 52%;
   --sidebar-primary: 340 82% 20%;
   --sidebar-primary-foreground: 340 82% 98%;
@@ -134,7 +134,7 @@
   --sidebar-primary: 24 94% 20%;
   --sidebar-primary-foreground: 24 94% 98%;
 }
-[data-theme="violet"] {
+[data-theme="purple"] {
   --primary: 262 83% 58%;
   --sidebar-primary: 262 83% 20%;
   --sidebar-primary-foreground: 262 83% 98%;

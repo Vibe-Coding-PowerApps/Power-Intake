@@ -9,11 +9,11 @@ import { useThemeConfig } from "./active-theme"
 const THEMES = [
   { label: "Default", value: "default" },
   { label: "Blue", value: "blue" },
+  { label: "Yellow", value: "yellow" },
+  { label: "Red", value: "red" },
+  { label: "Purple", value: "purple" },
   { label: "Green", value: "green" },
-  { label: "Amber", value: "amber" },
-  { label: "Rose", value: "rose" },
   { label: "Orange", value: "orange" },
-  { label: "Violet", value: "violet" },
 ]
 
 

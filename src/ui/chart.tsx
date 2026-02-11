@@ -10,10 +10,10 @@ const THEMES = {
   default: "",
   blue: '[data-theme="blue"]',
   green: '[data-theme="green"]',
-  amber: '[data-theme="amber"]',
-  rose: '[data-theme="rose"]',
+  yellow: '[data-theme="yellow"]',
+  red: '[data-theme="red"]',
   orange: '[data-theme="orange"]',
-  violet: '[data-theme="violet"]',
+  purple: '[data-theme="purple"]',
 } as const
 
 export type ChartConfig = {

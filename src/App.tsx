@@ -51,11 +51,7 @@ function App() {
   const PageComponent = routes[currentPath] ?? DashboardPage
 
   return (
-    <SidebarProvider
-      style={{
-        '--sidebar-width': 'calc(var(--spacing) * 72)',
-      } as React.CSSProperties}
-    >
+    <SidebarProvider>
       <AppSidebar variant="inset" userData={userData} />
       <SidebarInset>
         <SiteHeader />
