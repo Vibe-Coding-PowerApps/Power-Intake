@@ -1,6 +1,7 @@
 import { Separator } from '@/ui/separator'
 import { SidebarTrigger } from '@/ui/sidebar'
 import { ThemeToggle } from '@/components/theme-toggle'
+import { ThemeSelector } from '@/components/theme-selector'
 
 export function SiteHeader() {
   return (
@@ -13,6 +14,7 @@ export function SiteHeader() {
         />
         <h1 className="text-base font-medium text-foreground">Documents</h1>
         <div className="ml-auto flex items-center gap-2">
+          <ThemeSelector className="mr-2" />
           <ThemeToggle />
         </div>
       </div>
