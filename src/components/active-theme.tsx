@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
-const DEFAULT_THEME = 'default'
+const DEFAULT_THEME = 'dark'
 
 interface ThemeContextType {
   activeTheme: string
