@@ -17,7 +17,7 @@ import {
 } from "@tabler/icons-react"
 import { LayoutDashboard } from "lucide-react"
 
-import { NavDocuments } from '@/components/nav-documents'
+import { NavMedia } from '@/components/nav-media'
 import { NavMain } from '@/components/nav-main'
 import { NavSecondary } from '@/components/nav-secondary'
 import { NavUser } from '@/components/nav-user'
@@ -133,17 +133,17 @@ const data = {
     {
       name: "Power Guide",
       url: "https://example.com/power-guide",
-      icon: IconDatabase,
+      icon: "/icons/power-guide.svg",
     },
     {
       name: "Power Project",
       url: "https://example.com/power-project",
-      icon: IconAlertCircle,
+      icon: "/icons/power-project.svg",
     },
     {
       name: "Power Serve",
       url: "https://example.com/power-serve",
-      icon: IconFileWord,
+      icon: "/icons/power-serve.svg",
     },
   ],
 }
@@ -176,7 +176,7 @@ export function AppSidebar({ userData, ...props }: React.ComponentProps<typeof S
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
+        <NavMedia items={data.documents} />
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
