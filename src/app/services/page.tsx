@@ -131,10 +131,10 @@ export default function Page() {
         {filtered.map((s) => (
           <Card key={s.id} className="group flex flex-col h-full">
             <CardHeader>
-              <div>
-                <CardTitle>{s.title}</CardTitle>
-                <CardDescription>{s.subtitle}</CardDescription>
-              </div>
+              <div className="space-y-1.5">
+                  <CardTitle>{s.title}</CardTitle>
+                  <CardDescription>{s.subtitle}</CardDescription>
+                </div>
             </CardHeader>
             <CardContent className="flex-1">
               <p className="text-sm text-muted-foreground">{s.description}</p>
