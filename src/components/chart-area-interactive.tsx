@@ -18,6 +18,7 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from '@/ui/chart'
+import { useThemeConfig } from '@/components/active-theme'
 import {
   Select,
   SelectContent,
@@ -164,6 +165,8 @@ export function ChartAreaInteractive() {
     return date >= startDate
   })
 
+  const { activeTheme } = useThemeConfig()
+
   return (
     <Card className="@container/card dark:bg-zinc-900/50">
       <CardHeader>
@@ -211,6 +214,7 @@ export function ChartAreaInteractive() {
       <CardContent className="px-2 pt-4 sm:px-6 sm:pt-6">
         <ChartContainer
           config={chartConfig}
+          data-theme={activeTheme}
           className="aspect-auto h-[250px] w-full min-w-[200px] min-h-[200px]"
         >
           <AreaChart data={filteredData}>

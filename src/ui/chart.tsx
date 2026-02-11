@@ -6,7 +6,15 @@ import * as RechartsPrimitive from "recharts"
 import { cn } from "@/lib/utils"
 
 // Format: { THEME_NAME: CSS_SELECTOR }
-const THEMES = { light: "", dark: ".dark" } as const
+const THEMES = {
+  default: "",
+  blue: '[data-theme="blue"]',
+  green: '[data-theme="green"]',
+  amber: '[data-theme="amber"]',
+  rose: '[data-theme="rose"]',
+  orange: '[data-theme="orange"]',
+  violet: '[data-theme="violet"]',
+} as const
 
 export type ChartConfig = {
   [k in string]: {
@@ -76,28 +84,26 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
     return null
   }
 
-  return (
-    <style
-      dangerouslySetInnerHTML={{
-        __html: Object.entries(THEMES)
-          .map(
-            ([theme, prefix]) => `
-${prefix} [data-chart=${id}] {
-${colorConfig
-  .map(([key, itemConfig]) => {
-    const color =
-      itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
-      itemConfig.color
-    return color ? `  --color-${key}: ${color};` : null
-  })
-  .join("\n")}
-}
-`
-          )
-          .join("\n"),
-      }}
-    />
-  )
+  const css = Object.entries(THEMES)
+    .map(([theme, prefix]) => {
+      const selector = prefix
+        ? `${prefix} [data-chart=${id}], ${prefix}[data-chart=${id}]`
+        : `[data-chart=${id}]`
+      const body = colorConfig
+        .map(([key, itemConfig]) => {
+          const color =
+            itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
+            itemConfig.color
+          return color ? `  --color-${key}: ${color};` : null
+        })
+        .filter(Boolean)
+        .join("\n")
+
+      return `${selector} {\n${body}\n}`
+    })
+    .join("\n")
+
+  return <style dangerouslySetInnerHTML={{ __html: css }} />
 }
 
 const ChartTooltip = RechartsPrimitive.Tooltip
