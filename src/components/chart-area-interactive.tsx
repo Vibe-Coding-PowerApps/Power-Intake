@@ -19,6 +19,7 @@ import {
   type ChartConfig,
 } from '@/ui/chart'
 import { useThemeConfig } from '@/components/active-theme'
+import { useTheme } from 'next-themes'
 import {
   Select,
   SelectContent,
@@ -166,6 +167,10 @@ export function ChartAreaInteractive() {
   })
 
   const { activeTheme } = useThemeConfig()
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+  React.useEffect(() => setMounted(true), [])
+  const isDark = mounted ? resolvedTheme === 'dark' : false
 
   return (
     <Card className="@container/card dark:bg-zinc-900/50">
@@ -251,7 +256,7 @@ export function ChartAreaInteractive() {
               axisLine={false}
               tickMargin={8}
               minTickGap={32}
-              tick={{ fill: activeTheme === 'dark' ? '#FFFFFF' : '#0f172a' }}
+              tick={{ fill: isDark ? '#FFFFFF' : '#0f172a' }}
               tickFormatter={(value) => {
                 const date = new Date(value)
                 return date.toLocaleDateString("en-US", {

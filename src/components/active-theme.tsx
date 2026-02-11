@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
-const DEFAULT_THEME = 'dark'
+const DEFAULT_THEME = 'default'
 
 interface ThemeContextType {
   activeTheme: string
@@ -14,9 +14,9 @@ export function ActiveThemeProvider({ children, initialTheme }: { children: Reac
   const [activeTheme, setActiveTheme] = useState(initialTheme || DEFAULT_THEME)
 
   useEffect(() => {
-    // Persist selection
+    // Persist selection (use a distinct key to avoid colliding with next-themes)
     try {
-      localStorage.setItem('theme', activeTheme)
+      localStorage.setItem('active-theme', activeTheme)
     } catch (e) {
       /* ignore */
     }
@@ -25,7 +25,7 @@ export function ActiveThemeProvider({ children, initialTheme }: { children: Reac
   // On mount, restore stored theme if available
   useEffect(() => {
     try {
-      const stored = localStorage.getItem('theme')
+      const stored = localStorage.getItem('active-theme')
       if (stored) setActiveTheme(stored)
     } catch (e) {
       /* ignore */
