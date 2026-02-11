@@ -10,6 +10,7 @@ import {
   IconListDetails,
   IconTools,
   IconUsers,
+  IconLink,
   IconTemplate,
   IconBook,
   IconAlertCircle,
@@ -130,21 +131,9 @@ const data = {
     },
   ],
   documents: [
-    {
-      name: "Power Guide",
-      url: "https://example.com/power-guide",
-      icon: "/icons/power-guide.svg",
-    },
-    {
-      name: "Power Project",
-      url: "https://example.com/power-project",
-      icon: "/icons/power-project.svg",
-    },
-    {
-      name: "Power Serve",
-      url: "https://example.com/power-serve",
-      icon: "/icons/power-serve.svg",
-    },
+    { name: "Power Guide", url: "https://example.com/power-guide", icon: IconLink },
+    { name: "Power Project", url: "https://example.com/power-project", icon: IconLink },
+    { name: "Power Serve", url: "https://example.com/power-serve", icon: IconLink },
   ],
 }
 
