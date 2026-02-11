@@ -8,6 +8,7 @@ import {
   IconFileDescription,
   IconFileWord,
   IconListDetails,
+  IconTools,
   IconUsers,
   IconTemplate,
   IconBook,
@@ -47,6 +48,11 @@ const data = {
       url: "/dashboard",
       icon: LayoutDashboard,
     },
+      {
+        title: "Services",
+        url: "/services",
+        icon: IconTools,
+      },
     {
       title: "Use Cases",
       url: "/use-cases",

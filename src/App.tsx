@@ -6,6 +6,7 @@ import { SidebarInset, SidebarProvider } from '@/ui/sidebar'
 import HomePage from './app/home/page'
 import DashboardPage from './app/dashboard/page'
 import UseCasesPage from './app/use-cases/page'
+import ServicesPage from './app/services/page'
 import TeamPage from './app/team/page'
 import PowerGuidePage from './app/power-guide/page'
 import PowerProjectPage from './app/power-project/page'
@@ -37,6 +38,7 @@ function App() {
   const routes: Record<string, React.ComponentType<any>> = {
     '/': HomePage,
     '/dashboard': DashboardPage,
+    '/services': ServicesPage,
     '/home': HomePage,
     '/use-cases': UseCasesPage,
     '/team': TeamPage,
