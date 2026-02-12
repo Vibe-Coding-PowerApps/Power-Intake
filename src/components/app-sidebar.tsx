@@ -155,7 +155,17 @@ export function AppSidebar({ userData, ...props }: React.ComponentProps<typeof S
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <a href="#">
+              <a
+                href="/"
+                onClick={e => {
+                  e.preventDefault();
+                  if (window.location.pathname !== "/") {
+                    window.history.pushState({}, "", "/");
+                    window.dispatchEvent(new Event('locationchange'));
+                  }
+                }}
+                style={{ display: 'flex', alignItems: 'center', gap: 8 }}
+              >
                 <IconTemplate className="!size-5" />
                 <span className="text-base font-semibold">Template</span>
               </a>

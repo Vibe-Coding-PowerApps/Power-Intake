@@ -131,8 +131,8 @@ const useStyles = makeStyles({
   /* Font imports container */
   fontImports: {
     position: "absolute",
-    width: 1,
-    height: 1,
+    width: "1px",
+    height: "1px",
     overflow: "hidden",
     opacity: 0,
     pointerEvents: "none",
@@ -192,8 +192,8 @@ const useStyles = makeStyles({
     color: "rgba(29,29,29,0.75)",
   },
   iconBtn: {
-    width: 28,
-    height: 28,
+    width: "28px",
+    height: "28px",
     display: "grid",
     placeItems: "center",
     border: "1px solid rgba(29,29,29,0.35)",
@@ -273,7 +273,7 @@ const useStyles = makeStyles({
     right: "92px",
     top: "78%",
     transform: "translateY(-50%)",
-    width: 360,
+    width: "360px",
     maxWidth: "26vw",
     zIndex: 20,
   },
@@ -361,25 +361,25 @@ const useStyles = makeStyles({
   /* Responsive */
   "@media (max-width: 1100px)": {
     topbar: { padding: "20px 32px" },
-    leftTopCopy: { left: "44px", width: 520, maxWidth: "46vw" },
-    rightCopy: { right: "44px", width: 340, maxWidth: "40vw", top: "80%" },
-    leftBottomBlock: { left: "44px", width: 520, maxWidth: "60vw" },
+    leftTopCopy: { left: "44px", width: "520px", maxWidth: "46vw" },
+    rightCopy: { right: "44px", width: "340px", maxWidth: "40vw", top: "80%" },
+    leftBottomBlock: { left: "44px", width: "520px", maxWidth: "60vw" },
     // robotWrap removed
     bigTitle: { fontSize: "clamp(210px, 20vw, 280px)" },
   },
   "@media (max-width: 860px)": {
     nav: { display: "none" },
     topbar: { gridTemplateColumns: "1fr 1fr" },
-    leftTopCopy: { top: "58%", width: 520, maxWidth: "70vw" },
+    leftTopCopy: { top: "58%", width: "520px", maxWidth: "70vw" },
     rightCopy: {
       top: "84%",
       right: "24px",
-      width: 340,
+      width: "340px",
       maxWidth: "70vw",
       transform: "translateY(-50%)",
     },
     // robotWrap removed
-    leftBottomBlock: { bottom: "26px", width: 560, maxWidth: "86vw" },
+    leftBottomBlock: { bottom: "26px", width: "560px", maxWidth: "86vw" },
   },
 });
 
@@ -387,17 +387,23 @@ const useStyles = makeStyles({
    Asset
 ========================================================= */
 
-const STONE_IMAGE =
-  "https://frontier-firm.crm.dynamics.com/WebResources/genpages_glowing_soul_stone";
+const STONE_IMAGE = "/icons/glowing-soul-stone.png";
 
 /* =========================================================
    Page
 ========================================================= */
+
+function preloadImage(src: string) {
+  const img = new window.Image();
+  img.src = src;
+}
+
 function GeneratedComponent() {
   const classes = useStyles();
 
   const [navbarOff, setNavbarOff] = React.useState(false);
   const [inIframe, setInIframe] = React.useState(false);
+  const [stoneLoaded, setStoneLoaded] = React.useState(false);
 
   React.useEffect(() => {
     const detect = () => {
@@ -415,6 +421,9 @@ function GeneratedComponent() {
     window.addEventListener("popstate", detect);
     window.addEventListener("hashchange", detect);
 
+    // Preload stone image
+    preloadImage(STONE_IMAGE);
+
     return () => {
       window.removeEventListener("popstate", detect);
       window.removeEventListener("hashchange", detect);
@@ -423,7 +432,10 @@ function GeneratedComponent() {
 
   const navigateToServices = () => {
     try {
-      if (typeof window !== "undefined") window.location.assign("/services");
+      if (window.location.pathname !== "/services") {
+        window.history.pushState({}, "", "/services");
+        window.dispatchEvent(new Event('locationchange'));
+      }
     } catch {}
   };
 
@@ -490,7 +502,14 @@ function GeneratedComponent() {
             alt="Glowing Soul Stone"
             className={classes.stone}
             draggable={false}
+            onLoad={() => setStoneLoaded(true)}
+            style={{ opacity: stoneLoaded ? 1 : 0, transition: 'opacity 0.3s' }}
           />
+          {!stoneLoaded && (
+            <div style={{position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <span style={{color: '#aaa'}}>Loading...</span>
+            </div>
+          )}
         </div>
 
         <div className={classes.rightCopy}>
@@ -515,7 +534,13 @@ function GeneratedComponent() {
           <div className={classes.rightBtnRow}>
             <button
               className={mergeClasses(classes.btn, classes.btnPrimary)}
-              onClick={navigateToServices}
+              onClick={e => {
+                e.preventDefault();
+                if (window.location.pathname !== "/services") {
+                  window.history.pushState({}, "", "/services");
+                  window.dispatchEvent(new Event('locationchange'));
+                }
+              }}
             >
               Get Started
             </button>
@@ -535,7 +560,13 @@ function GeneratedComponent() {
           <div className={classes.leftBottomActions}>
             <button
               className={mergeClasses(classes.btn, classes.btnPrimary)}
-              onClick={navigateToServices}
+              onClick={e => {
+                e.preventDefault();
+                if (window.location.pathname !== "/services") {
+                  window.history.pushState({}, "", "/services");
+                  window.dispatchEvent(new Event('locationchange'));
+                }
+              }}
             >
               Get Started
             </button>

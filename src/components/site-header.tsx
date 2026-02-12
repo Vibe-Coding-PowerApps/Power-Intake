@@ -23,7 +23,18 @@ export function SiteHeader() {
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
-        <h1 className="text-base font-medium text-foreground">Documents</h1>
+        <button
+          className="text-base font-medium text-foreground px-0 bg-transparent border-none cursor-pointer hover:underline"
+          onClick={e => {
+            e.preventDefault();
+            if (window.location.pathname !== "/") {
+              window.history.pushState({}, "", "/");
+              window.dispatchEvent(new Event('locationchange'));
+            }
+          }}
+        >
+          Power Intake
+        </button>
         <div className="ml-auto flex items-center gap-2">
           <ThemeSelector className="mr-2" />
           <ThemeToggle />
