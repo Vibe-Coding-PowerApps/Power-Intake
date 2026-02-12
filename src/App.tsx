@@ -4,6 +4,7 @@ import { AppSidebar } from '@/components/app-sidebar'
 import { SiteHeader } from '@/components/site-header'
 import { SidebarInset, SidebarProvider } from '@/ui/sidebar'
 import HomePage from './app/home/page'
+import LandingPage from './app/landing-page/page'
 import DashboardPage from './app/dashboard/page'
 import UseCasesPage from './app/use-cases/page'
 import ServicesPage from './app/services/page'
@@ -36,7 +37,7 @@ function App() {
   }, [])
 
   const routes: Record<string, React.ComponentType<any>> = {
-    '/': HomePage,
+    '/': LandingPage,
     '/dashboard': DashboardPage,
     '/services': ServicesPage,
     '/home': HomePage,
@@ -50,7 +51,14 @@ function App() {
     '/get-help': GetHelpPage,
   }
   const currentPath = usePath()
+  // debug: show current path in the browser console
+  if (typeof window !== 'undefined') console.debug('[App] currentPath=', currentPath)
   const PageComponent = routes[currentPath] ?? DashboardPage
+
+  // Render a full-bleed public landing page at root without the admin shell
+  if (currentPath === '/') {
+    return <LandingPage />
+  }
 
   return (
     <SidebarProvider>

@@ -1,1 +1,32 @@
+/* Code Apps: no-bleed root + landing base */
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #f6c108;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* minimal landing helpers (specific layout lives in the component styles) */
+.landing-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
 /* CSS moved to src/styles/globals.css */
