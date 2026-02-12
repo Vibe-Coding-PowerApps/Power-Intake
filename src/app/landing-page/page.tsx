@@ -228,7 +228,7 @@ const useStyles = makeStyles({
     left: "88px",
     top: "52%",
     transform: "translateY(-50%)",
-    width: 560,
+    width: "560px",
     maxWidth: "36vw",
     zIndex: 20,
   },
@@ -247,7 +247,7 @@ const useStyles = makeStyles({
     position: "absolute",
     left: "88px",
     bottom: "38px",
-    width: 560,
+    width: "560px",
     maxWidth: "36vw",
     zIndex: 20,
   },
@@ -319,25 +319,43 @@ const useStyles = makeStyles({
     color: "rgba(29,29,29,0.95)",
   },
 
-  /* Robot */
-  robotWrap: {
+
+  /* Stone (transparent PNG) */
+  stoneWrap: {
     position: "absolute",
     left: "50%",
-    bottom: 0,
+    bottom: "-160px", // Move lower as needed
     transform: "translateX(-50%)",
     zIndex: 10,
-    width: "min(1120px, 66vw)",
-    maxWidth: "1180px",
-    minWidth: "620px",
+    width: "min(760px, 46vw)",
+    maxWidth: "860px",
+    minWidth: "460px",
     pointerEvents: "none",
   },
-  robot: {
+
+  stone: {
     width: "100%",
     height: "auto",
     display: "block",
     userSelect: "none",
     filter:
-      "drop-shadow(0 44px 96px rgba(0,0,0,0.30)) saturate(1.20) contrast(1.10)",
+      "drop-shadow(0 44px 96px rgba(0,0,0,0.28)) drop-shadow(0 10px 24px rgba(0,0,0,0.18)) saturate(1.15) contrast(1.08)",
+  },
+
+  /* Optional: soft halo behind the stone to blend with stage */
+  stoneHalo: {
+    position: "absolute",
+    left: "50%",
+    top: "52%",
+    transform: "translate(-50%, -50%)",
+    width: "92%",
+    height: "92%",
+    pointerEvents: "none",
+    zIndex: 0,
+    background:
+      "radial-gradient(closest-side at 50% 55%, rgba(255,230,150,0.55) 0%, rgba(255,190,60,0.22) 42%, rgba(244,165,39,0) 72%)",
+    filter: "blur(2px)",
+    opacity: 0.9,
   },
 
   /* Responsive */
@@ -346,7 +364,7 @@ const useStyles = makeStyles({
     leftTopCopy: { left: "44px", width: 520, maxWidth: "46vw" },
     rightCopy: { right: "44px", width: 340, maxWidth: "40vw", top: "80%" },
     leftBottomBlock: { left: "44px", width: 520, maxWidth: "60vw" },
-    robotWrap: { width: "min(1050px, 74vw)" },
+    // robotWrap removed
     bigTitle: { fontSize: "clamp(210px, 20vw, 280px)" },
   },
   "@media (max-width: 860px)": {
@@ -360,7 +378,7 @@ const useStyles = makeStyles({
       maxWidth: "70vw",
       transform: "translateY(-50%)",
     },
-    robotWrap: { width: "min(980px, 92vw)" },
+    // robotWrap removed
     leftBottomBlock: { bottom: "26px", width: 560, maxWidth: "86vw" },
   },
 });
@@ -368,8 +386,9 @@ const useStyles = makeStyles({
 /* =========================================================
    Asset
 ========================================================= */
-const ROBOT_IMAGE =
-  "https://frontier-firm.crm.dynamics.com/WebResources/genpages_futuristics_streetwear_cyberpunk_robot";
+
+const STONE_IMAGE =
+  "https://frontier-firm.crm.dynamics.com/WebResources/genpages_glowing_soul_stone";
 
 /* =========================================================
    Page
@@ -463,11 +482,13 @@ function GeneratedComponent() {
           </p>
         </div>
 
-        <div className={classes.robotWrap}>
+
+        <div className={classes.stoneWrap}>
+          <div className={classes.stoneHalo} />
           <img
-            src={ROBOT_IMAGE}
-            alt="Power Intake"
-            className={classes.robot}
+            src={STONE_IMAGE}
+            alt="Glowing Soul Stone"
+            className={classes.stone}
             draggable={false}
           />
         </div>
