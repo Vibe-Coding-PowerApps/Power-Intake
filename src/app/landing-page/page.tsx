@@ -470,7 +470,7 @@ function GeneratedComponent() {
           </div>
 
           <div style={{display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'flex-end'}}>
-            <span style={{fontFamily: 'Inter, Arial, sans-serif', fontWeight: 500, fontSize: 16, color: '#222'}}>Alex Johnson</span>
+            <span style={{fontFamily: 'Inter, Arial, sans-serif', fontWeight: 500, fontSize: 16, color: '#222'}}>John Doe</span>
             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" style={{width: 36, height: 36, borderRadius: '50%', objectFit: 'cover', border: '2px solid #fff', boxShadow: '0 2px 8px rgba(0,0,0,0.10)'}} />
           </div>
         </div>

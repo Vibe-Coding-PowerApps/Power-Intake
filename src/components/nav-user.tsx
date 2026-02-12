@@ -66,10 +66,17 @@ export function NavUser({
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <Avatar className="h-8 w-8 rounded-lg grayscale">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">{initials}</AvatarFallback>
-              </Avatar>
+              {/* Direct test image for debug */}
+              <img
+                src="/icons/john-doe.jpg"
+                alt="Test John Doe"
+                style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover', border: '2px solid #fff', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', background: '#222', marginRight: 8 }}
+                onError={e => {
+                  e.currentTarget.style.display = 'none';
+                  // eslint-disable-next-line no-console
+                  console.error('Sidebar test image failed to load:', e.currentTarget.src);
+                }}
+              />
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">{user.name}</span>
                 <span className="text-muted-foreground truncate text-xs">
@@ -87,10 +94,39 @@ export function NavUser({
           >
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-                <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback className="rounded-lg">{initials}</AvatarFallback>
-                </Avatar>
+                <span style={{position: 'relative', display: 'inline-block', width: 36, height: 36}}>
+                  <img
+                    src={user.avatar}
+                    alt={user.name}
+                    style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover', border: '2px solid #fff', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', background: '#222' }}
+                    onError={e => {
+                      e.currentTarget.style.display = 'none';
+                      const fallback = e.currentTarget.nextElementSibling;
+                      if (fallback) fallback.style.display = 'flex';
+                    }}
+                  />
+                  <span
+                    style={{
+                      display: 'none',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      width: 36,
+                      height: 36,
+                      borderRadius: '50%',
+                      background: '#444',
+                      color: '#fff',
+                      fontWeight: 600,
+                      fontSize: 16,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      textAlign: 'center',
+                      lineHeight: '36px',
+                    }}
+                  >
+                    {initials}
+                  </span>
+                </span>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-medium">{user.name}</span>
                   <span className="text-muted-foreground truncate text-xs">
