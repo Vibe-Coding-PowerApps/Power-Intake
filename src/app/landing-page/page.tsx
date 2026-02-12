@@ -303,7 +303,7 @@ const useStyles = makeStyles({
     border: 0,
     outline: "none",
     userSelect: "none",
-    cursor: "default",
+    cursor: "pointer",
     borderRadius: "999px",
     padding: "13px 22px",
     fontFamily:
@@ -402,6 +402,12 @@ function GeneratedComponent() {
     };
   }, []);
 
+  const navigateToServices = () => {
+    try {
+      if (typeof window !== "undefined") window.location.assign("/services");
+    } catch {}
+  };
+
   return (
     <FluentProvider
       theme={webDarkTheme}
@@ -486,7 +492,10 @@ function GeneratedComponent() {
           </p>
 
           <div className={classes.rightBtnRow}>
-            <button className={mergeClasses(classes.btn, classes.btnPrimary)}>
+            <button
+              className={mergeClasses(classes.btn, classes.btnPrimary)}
+              onClick={navigateToServices}
+            >
               Get Started
             </button>
           </div>
@@ -503,7 +512,10 @@ function GeneratedComponent() {
           </p>
 
           <div className={classes.leftBottomActions}>
-            <button className={mergeClasses(classes.btn, classes.btnPrimary)}>
+            <button
+              className={mergeClasses(classes.btn, classes.btnPrimary)}
+              onClick={navigateToServices}
+            >
               Get Started
             </button>
             <button className={mergeClasses(classes.btn, classes.btnSecondary)}>
