@@ -244,12 +244,12 @@ const useStyles = makeStyles({
 
   /* Bottom-left block */
   leftBottomBlock: {
-    position: "absolute",
-    left: "88px",
-    bottom: "38px",
-    width: "560px",
-    maxWidth: "36vw",
-    zIndex: 20,
+     position: "absolute",
+     left: "88px",
+     bottom: "180px", // moved up for alignment with right button
+     width: "560px",
+     maxWidth: "36vw",
+     zIndex: 20,
   },
   leftBottomP: {
     margin: 0,
@@ -269,13 +269,13 @@ const useStyles = makeStyles({
 
   /* Right content block */
   rightCopy: {
-    position: "absolute",
-    right: "92px",
-    top: "78%",
-    transform: "translateY(-50%)",
-    width: "360px",
-    maxWidth: "26vw",
-    zIndex: 20,
+     position: "absolute",
+     right: "92px",
+     top: "65%", // moved up from 78%
+     transform: "translateY(-50%)",
+     width: "360px",
+     maxWidth: "26vw",
+     zIndex: 20,
   },
   rightH: {
     margin: 0,
@@ -462,36 +462,27 @@ function GeneratedComponent() {
           <div className={classes.brand}>POWER INTAKE</div>
 
           <div className={classes.nav}>
-            <div className={classes.navLink}>Camera Drones</div>
-            <div className={classes.navLink}>Handheld</div>
-            <div className={classes.navLink}>Services</div>
-            <div className={classes.navLink}>Lookbook</div>
-            <div className={classes.navLink}>Contact</div>
+            <div className={classes.navLink}>Power Guide</div>
+            <div className={classes.navLink}>Power Insights</div>
+            <div className={classes.navLink}>Power Serve</div>
+            <div className={classes.navLink}>FAQs</div>
+            <div className={classes.navLink}>Get Help</div>
           </div>
 
-          <div className={classes.icons}>
-            <div className={classes.iconBtn} aria-hidden="true">
-              <Icon name="search" />
-            </div>
-            <div className={classes.iconBtn} aria-hidden="true">
-              <Icon name="user" />
-            </div>
-            <div className={classes.iconBtn} aria-hidden="true">
-              <Icon name="bag" />
-            </div>
+          <div style={{display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'flex-end'}}>
+            <span style={{fontFamily: 'Inter, Arial, sans-serif', fontWeight: 500, fontSize: 16, color: '#222'}}>Alex Johnson</span>
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" style={{width: 36, height: 36, borderRadius: '50%', objectFit: 'cover', border: '2px solid #fff', boxShadow: '0 2px 8px rgba(0,0,0,0.10)'}} />
           </div>
         </div>
 
         <div className={classes.bigTitle}>POWER INTAKE</div>
 
         <div className={classes.leftTopCopy}>
-          <p className={classes.leftTopP}>
-            Engage in superior aerial photography using
-            <br />
-            intelligent flight technology with filmic stability,
-            <br />
-            Intended for creators requiring precision.
-          </p>
+            <p className={classes.leftTopP}>
+              Build smarter, faster, and more securely.<br />
+              Expand your platform with seamless integrations<br />
+              and dedicated support every step of the way.
+            </p>
         </div>
 
 
@@ -512,67 +503,68 @@ function GeneratedComponent() {
           )}
         </div>
 
-        <div className={classes.rightCopy}>
-          <h3 className={classes.rightH}>
-            Own the <br />
-            Future of <br />
-            Digital Art
-          </h3>
-
-          <p className={classes.rightP}>
-            Engage in superior aerial
-            <br />
-            photography using intelligent
-            <br />
-            flight technology with filmic
-            <br />
-            stability, Intended for creators
-            <br />
-            requiring precision.
-          </p>
-
-          <div className={classes.rightBtnRow}>
-            <button
-              className={mergeClasses(classes.btn, classes.btnPrimary)}
-              onClick={e => {
-                e.preventDefault();
-                if (window.location.pathname !== "/services") {
-                  window.history.pushState({}, "", "/services");
-                  window.dispatchEvent(new Event('locationchange'));
-                }
-              }}
-            >
-              Get Started
-            </button>
+        {/* Flex row for perfectly aligned button groups */}
+        <div style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 100,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-end',
+          padding: '0 88px',
+          pointerEvents: 'none', // allow content above to be clickable
+          zIndex: 30
+        }}>
+          <div style={{ pointerEvents: 'auto', maxWidth: 560 }}>
+            <p className={classes.leftBottomP}>
+              Navigate challenges with confidence.<br />
+              Access specialized assistance<br />
+              for every aspect of your digital transformation.
+            </p>
+            <div className={classes.leftBottomActions}>
+              <button
+                className={mergeClasses(classes.btn, classes.btnPrimary)}
+                onClick={e => {
+                  e.preventDefault();
+                  if (window.location.pathname !== "/services") {
+                    window.history.pushState({}, "", "/services");
+                    window.dispatchEvent(new Event('locationchange'));
+                  }
+                }}
+              >
+                Get Started
+              </button>
+              <button className={mergeClasses(classes.btn, classes.btnSecondary)}>
+                View Requests
+              </button>
+            </div>
           </div>
-        </div>
-
-        {/* Bottom-left: original text preserved, only gap reduced */}
-        <div className={classes.leftBottomBlock}>
-          <p className={classes.leftBottomP}>
-            Engage in superior aerial photography using
-            <br />
-            intelligent flight technology with filmic stability,
-            <br />
-            Intended for creators requiring precision.
-          </p>
-
-          <div className={classes.leftBottomActions}>
-            <button
-              className={mergeClasses(classes.btn, classes.btnPrimary)}
-              onClick={e => {
-                e.preventDefault();
-                if (window.location.pathname !== "/services") {
-                  window.history.pushState({}, "", "/services");
-                  window.dispatchEvent(new Event('locationchange'));
-                }
-              }}
-            >
-              Get Started
-            </button>
-            <button className={mergeClasses(classes.btn, classes.btnSecondary)}>
-              View Requests
-            </button>
+          <div style={{ pointerEvents: 'auto', maxWidth: 360, textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', height: '100%' }}>
+            <h3 className={classes.rightH}>
+              Own the <br />
+              Future of <br />
+              Digital Solutions
+            </h3>
+            <p className={classes.rightP}>
+              Empower your team to build, secure,<br />
+              and scale apps with expert guidance.<br />
+              Transform ideas into impact—fast.
+            </p>
+            <div className={classes.rightBtnRow}>
+              <button
+                className={mergeClasses(classes.btn, classes.btnPrimary)}
+                onClick={e => {
+                  e.preventDefault();
+                  if (window.location.pathname !== "/services") {
+                    window.history.pushState({}, "", "/services");
+                    window.dispatchEvent(new Event('locationchange'));
+                  }
+                }}
+              >
+                Get Started
+              </button>
+            </div>
           </div>
         </div>
       </div>
