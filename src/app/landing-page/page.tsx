@@ -554,15 +554,8 @@ function GeneratedComponent() {
             <div className={classes.rightBtnRow}>
               <button
                 className={mergeClasses(classes.btn, classes.btnPrimary)}
-                onClick={e => {
-                  e.preventDefault();
-                  if (window.location.pathname !== "/services") {
-                    window.history.pushState({}, "", "/services");
-                    window.dispatchEvent(new Event('locationchange'));
-                  }
-                }}
               >
-                Get Started
+                Ask us anything
               </button>
             </div>
           </div>
