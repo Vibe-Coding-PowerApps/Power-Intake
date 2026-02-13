@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "title": "Radix UI Documentation",
+    "description": "Comprehensive guide and API reference for Radix UI components.",
+    "url": "https://www.radix-ui.com/docs/primitives/overview/introduction",
+    "category": "UI Library"
+  },
+  {
+    "id": 2,
+    "title": "Tailwind CSS Docs",
+    "description": "Official documentation for Tailwind CSS utility classes and configuration.",
+    "url": "https://tailwindcss.com/docs",
+    "category": "CSS Framework"
+  },
+  {
+    "id": 3,
+    "title": "React Documentation",
+    "description": "Official React documentation for learning and reference.",
+    "url": "https://react.dev/",
+    "category": "Framework"
+  },
+  {
+    "id": 4,
+    "title": "Shadcn UI",
+    "description": "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "url": "https://ui.shadcn.com/",
+    "category": "UI Components"
+  },
+  {
+    "id": 5,
+    "title": "Next.js Documentation",
+    "description": "Official Next.js documentation for building React applications.",
+    "url": "https://nextjs.org/docs",
+    "category": "Framework"
+  }
+]
