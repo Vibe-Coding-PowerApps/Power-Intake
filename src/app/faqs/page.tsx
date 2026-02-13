@@ -139,7 +139,7 @@ export default function Page() {
   }, [filteredSections])
 
   return (
-    <div className="@container/main flex min-w-0 flex-1 flex-col gap-4 p-6">
+    <div className="@container/main flex min-w-0 flex-1 flex-col gap-4 p-6 overflow-auto" style={{ height: '100vh' }}>
       <div>
         <h1 className="text-3xl font-semibold">FAQs</h1>
         <p className="text-muted-foreground mt-2">Frequently asked questions.</p>

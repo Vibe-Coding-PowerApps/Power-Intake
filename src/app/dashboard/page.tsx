@@ -7,8 +7,8 @@ import data from "./data.json"
 
 export default function Page() {
   return (
-    <div className="@container/main flex min-w-0 flex-1 flex-col gap-2">
-      <div className="flex min-w-0 flex-1 flex-col gap-4 overflow-y-auto py-4 md:gap-6 md:py-6">
+    <div className="@container/main flex min-w-0 flex-1 flex-col gap-2 overflow-auto" style={{ height: '100vh' }}>
+      <div className="flex min-w-0 flex-1 flex-col gap-4 py-4 md:gap-6 md:py-6">
         <SectionCards />
         <div className="px-4 lg:px-6">
           <Suspense fallback={<div style={{height:250}} className="w-full"><div className="animate-pulse h-full w-full bg-muted rounded-lg" /></div>}>
