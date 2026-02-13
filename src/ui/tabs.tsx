@@ -27,10 +27,11 @@ const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
 >(({ className, ...props }, ref) => {
-  // Use explicit important text colors so tabs remain readable across refreshes
+  // Ensure selected tab font color is visible in light mode
   // Default (inactive): `text-foreground`; Active: `text-primary-foreground` (important)
-  // Active tab: use theme primary foreground in light mode, but force white in dark/default themes
-  const activeTextClass = "!text-foreground data-[state=active]:!text-primary-foreground dark:data-[state=active]:!text-white"
+  // Active tab: use theme primary foreground in light mode, and white in dark mode
+  // Force selected tab font color to black in light mode for visibility
+  const activeTextClass = "data-[state=active]:!text-black dark:data-[state=active]:!text-white"
 
   return (
     <TabsPrimitive.Trigger
