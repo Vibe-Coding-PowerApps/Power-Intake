@@ -117,18 +117,10 @@ const SECTIONS = [
 ]
 
 export default function Page() {
-  const [category, setCategory] = React.useState<string>("All")
   const [openMap, setOpenMap] = React.useState<Record<string, string | null>>({})
 
-  const filteredSections = React.useMemo(() => {
-    if (category === "All") return SECTIONS
-    // filter sections and faqs by category match
-    return SECTIONS.filter((s) =>
-      s.title === category
-        ? true
-        : s.faqs.some((f) => f.question.toLowerCase().includes(category.toLowerCase()))
-    )
-  }, [category])
+  // No category filtering, show all sections
+  const filteredSections = SECTIONS;
 
   React.useEffect(() => {
     const map: Record<string, string | null> = {}
@@ -141,26 +133,8 @@ export default function Page() {
   return (
     <div className="@container/main flex min-w-0 flex-1 flex-col gap-4 p-6 overflow-auto" style={{ height: '100vh' }}>
       <div>
-        <h1 className="text-3xl font-semibold">FAQs</h1>
-        <p className="text-muted-foreground mt-2">Frequently asked questions.</p>
-      </div>
-
-      <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex w-full max-w-xs items-center gap-2">
-          <label className="sr-only">Category</label>
-          <Select value={category} onValueChange={(v) => setCategory(v)}>
-            <SelectTrigger aria-label="Filter FAQs by category">
-              <SelectValue placeholder="Category">{category}</SelectValue>
-            </SelectTrigger>
-            <SelectContent>
-              {categories.map((c) => (
-                <SelectItem key={c} value={c}>
-                  {c}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
+        <h1 className="text-3xl font-semibold">Frequently asked questions.</h1>
+        <p className="text-muted-foreground mt-2">Answers about request process, communications, notifications, and support policies.</p>
       </div>
 
       <div className="flex w-full justify-center">
