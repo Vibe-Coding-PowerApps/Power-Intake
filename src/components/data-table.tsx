@@ -51,7 +51,7 @@ import {
 } from "@tanstack/react-table"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 import { toast } from "sonner"
-import { z } from "zod"
+import { schema } from "./data-table-schema"
 
 import { useIsMobile } from '@/hooks/use-mobile'
 import { Badge } from '@/ui/badge'
@@ -106,15 +106,7 @@ import {
   TabsTrigger,
 } from '@/ui/tabs'
 
-export const schema = z.object({
-  id: z.number(),
-  header: z.string(),
-  type: z.string(),
-  status: z.string(),
-  target: z.string(),
-  limit: z.string(),
-  reviewer: z.string(),
-})
+
 
 // Create a separate component for the drag handle
 function DragHandle({ id }: { id: number }) {
@@ -170,7 +162,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: "header",
-    header: "Header",
+    header: "Title",
     cell: ({ row }) => {
       return <TableCellViewer item={row.original} />
     },
@@ -178,12 +170,10 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: "type",
-    header: "Section Type",
+    header: "Service Type",
     cell: ({ row }) => (
-      <div className="w-32">
-        <Badge variant="outline" className="text-muted-foreground px-3 py-1.5">
-          {row.original.type}
-        </Badge>
+      <div className="w-40 whitespace-nowrap text-foreground">
+        {row.original.type}
       </div>
     ),
   },
@@ -203,7 +193,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: "target",
-    header: () => <div className="w-full text-right">Target</div>,
+    header: () => <div className="w-full text-right">Active Days</div>,
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
@@ -216,7 +206,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
         }}
       >
         <Label htmlFor={`${row.original.id}-target`} className="sr-only">
-          Target
+          Active Days
         </Label>
         <Input
           className="h-8 w-16 border-transparent bg-input/20 text-right text-foreground shadow-none focus-visible:border focus-visible:bg-input/30 hover:bg-input/30 dark:bg-input/20 dark:focus-visible:bg-input/30 dark:hover:bg-input/30"
@@ -228,28 +218,22 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: "limit",
-    header: () => <div className="w-full text-right">Limit</div>,
-    cell: ({ row }) => (
-      <form
-        onSubmit={(e) => {
-          e.preventDefault()
-          toast.promise(new Promise((resolve) => setTimeout(resolve, 1000)), {
-            loading: `Saving ${row.original.header}`,
-            success: "Done",
-            error: "Error",
-          })
-        }}
-      >
-        <Label htmlFor={`${row.original.id}-limit`} className="sr-only">
-          Limit
-        </Label>
-        <Input
-          className="h-8 w-16 border-transparent bg-input/20 text-right text-foreground shadow-none focus-visible:border focus-visible:bg-input/30 hover:bg-input/30 dark:bg-input/20 dark:focus-visible:bg-input/30 dark:hover:bg-input/30"
-          defaultValue={row.original.limit}
-          id={`${row.original.id}-limit`}
-        />
-      </form>
-    ),
+    header: () => <div className="w-full text-right">First Response SLA</div>,
+    cell: ({ row }) => {
+      // Use firstResponseDays for SLA calculation
+      const days = Number(row.original.firstResponseDays);
+      let status = '';
+      if (!isNaN(days)) {
+        status = `${days} days (${days >= 3 && days <= 5 ? 'Met' : 'Not Met'})`;
+      } else {
+        status = 'N/A';
+      }
+      return (
+        <div className="w-full text-right px-2 py-1">
+          {status}
+        </div>
+      );
+    },
   },
   {
     accessorKey: "reviewer",

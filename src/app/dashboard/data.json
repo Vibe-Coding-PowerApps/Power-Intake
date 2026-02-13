@@ -2,106 +2,117 @@
   {
     "id": 1,
     "header": "Cover page",
-    "type": "Cover page",
+    "type": "Acquisition",
     "status": "In Process",
     "target": "18",
     "limit": "5",
-    "reviewer": "Eddie Lake"
+    "reviewer": "Eddie Lake",
+    "firstResponseDays": 4
   },
   {
     "id": 2,
     "header": "Table of contents",
-    "type": "Table of contents",
+    "type": "Connector, Feature, Product",
     "status": "Done",
     "target": "29",
     "limit": "24",
-    "reviewer": "Eddie Lake"
+    "reviewer": "Eddie Lake",
+    "firstResponseDays": 3
   },
   {
     "id": 3,
     "header": "Executive summary",
-    "type": "Narrative",
+    "type": "Custom Connector",
     "status": "Done",
     "target": "10",
     "limit": "13",
-    "reviewer": "Eddie Lake"
+    "reviewer": "Eddie Lake",
+    "firstResponseDays": 6
   },
   {
     "id": 4,
     "header": "Technical approach",
-    "type": "Narrative",
+    "type": "Development Support",
     "status": "Done",
     "target": "27",
     "limit": "23",
-    "reviewer": "Jamik Tashpulatov"
+    "reviewer": "Jamik Tashpulatov",
+    "firstResponseDays": 5
   },
   {
     "id": 5,
     "header": "Design",
-    "type": "Narrative",
+    "type": "Environment Access",
     "status": "In Process",
     "target": "2",
     "limit": "16",
-    "reviewer": "Jamik Tashpulatov"
+    "reviewer": "Jamik Tashpulatov",
+    "firstResponseDays": 4
   },
   {
     "id": 6,
     "header": "Capabilities",
-    "type": "Narrative",
+    "type": "HTTP Allow-List",
     "status": "In Process",
     "target": "20",
     "limit": "8",
-    "reviewer": "Jamik Tashpulatov"
+    "reviewer": "Jamik Tashpulatov",
+    "firstResponseDays": 3
   },
   {
     "id": 7,
     "header": "Integration with existing systems",
-    "type": "Narrative",
+    "type": "Premium Licensing",
     "status": "In Process",
     "target": "19",
     "limit": "21",
-    "reviewer": "Jamik Tashpulatov"
+    "reviewer": "Jamik Tashpulatov",
+    "firstResponseDays": 7
   },
   {
     "id": 8,
     "header": "Innovation and Advantages",
-    "type": "Narrative",
+    "type": "Solution Design Review",
     "status": "Done",
     "target": "25",
     "limit": "26",
-    "reviewer": "Assign reviewer"
+    "reviewer": "Assign reviewer",
+    "firstResponseDays": 4
   },
   {
     "id": 9,
     "header": "Overview of EMR's Innovative Solutions",
-    "type": "Technical content",
+    "type": "Development Support",
     "status": "Done",
     "target": "7",
     "limit": "23",
-    "reviewer": "Assign reviewer"
+    "reviewer": "Assign reviewer",
+    "firstResponseDays": 8
   },
   {
     "id": 10,
     "header": "Advanced Algorithms and Machine Learning",
-    "type": "Narrative",
+    "type": "Solution Design Review",
     "status": "Done",
     "target": "30",
     "limit": "28",
-    "reviewer": "Assign reviewer"
+    "reviewer": "Assign reviewer",
+    "firstResponseDays": 5
   },
   {
     "id": 11,
     "header": "Adaptive Communication Protocols",
-    "type": "Narrative",
+    "type": "Acquisition",
     "status": "Done",
     "target": "9",
     "limit": "31",
-    "reviewer": "Assign reviewer"
+    "reviewer": "Assign reviewer",
+    "firstResponseDays": 3
   },
   {
     "id": 12,
     "header": "Advantages Over Current Technologies",
-    "type": "Narrative",
+    "type": "Connector, Feature, Product",
     "status": "Done",
     "target": "12",
     "limit": "0",
@@ -110,7 +121,7 @@
   {
     "id": 13,
     "header": "Past Performance",
-    "type": "Narrative",
+    "type": "Custom Connector",
     "status": "Done",
     "target": "22",
     "limit": "33",
@@ -119,7 +130,7 @@
   {
     "id": 14,
     "header": "Customer Feedback and Satisfaction Levels",
-    "type": "Narrative",
+    "type": "Development Support",
     "status": "Done",
     "target": "15",
     "limit": "34",
@@ -128,7 +139,7 @@
   {
     "id": 15,
     "header": "Implementation Challenges and Solutions",
-    "type": "Narrative",
+    "type": "Environment Access",
     "status": "Done",
     "target": "3",
     "limit": "35",
@@ -137,7 +148,7 @@
   {
     "id": 16,
     "header": "Security Measures and Data Protection Policies",
-    "type": "Narrative",
+    "type": "HTTP Allow-List",
     "status": "In Process",
     "target": "6",
     "limit": "36",
@@ -146,7 +157,7 @@
   {
     "id": 17,
     "header": "Scalability and Future Proofing",
-    "type": "Narrative",
+      "type": "Acquisition",
     "status": "Done",
     "target": "4",
     "limit": "37",
@@ -155,7 +166,7 @@
   {
     "id": 18,
     "header": "Cost-Benefit Analysis",
-    "type": "Plain language",
+    "type": "Premium Licensing",
     "status": "Done",
     "target": "14",
     "limit": "38",
@@ -164,7 +175,7 @@
   {
     "id": 19,
     "header": "User Training and Onboarding Experience",
-    "type": "Narrative",
+    "type": "Solution Design Review",
     "status": "Done",
     "target": "17",
     "limit": "39",
@@ -182,7 +193,7 @@
   {
     "id": 21,
     "header": "System Architecture Overview",
-    "type": "Technical content",
+      "type": "Connector, Feature, Product",
     "status": "In Process",
     "target": "24",
     "limit": "18",
@@ -209,7 +220,7 @@
   {
     "id": 24,
     "header": "API Documentation",
-    "type": "Technical content",
+      "type": "Custom Connector",
     "status": "Done",
     "target": "8",
     "limit": "12",
@@ -254,7 +265,7 @@
   {
     "id": 29,
     "header": "Budget Breakdown",
-    "type": "Financial",
+      "type": "Development Support",
     "status": "In Process",
     "target": "13",
     "limit": "16",
@@ -281,7 +292,7 @@
   {
     "id": 32,
     "header": "Maintenance Plan",
-    "type": "Technical content",
+      "type": "Environment Access",
     "status": "Done",
     "target": "16",
     "limit": "23",
@@ -308,7 +319,7 @@
   {
     "id": 35,
     "header": "Performance Metrics",
-    "type": "Technical content",
+      "type": "HTTP Allow-List",
     "status": "In Process",
     "target": "23",
     "limit": "26",
@@ -335,7 +346,7 @@
   {
     "id": 38,
     "header": "User Feedback Summary",
-    "type": "Research",
+      "type": "Premium Licensing",
     "status": "Done",
     "target": "20",
     "limit": "15",
@@ -362,7 +373,7 @@
   {
     "id": 41,
     "header": "Data Migration Plan",
-    "type": "Technical content",
+      "type": "Solution Design Review",
     "status": "In Process",
     "target": "19",
     "limit": "22",
@@ -389,7 +400,7 @@
   {
     "id": 44,
     "header": "Environmental Impact Assessment",
-    "type": "Research",
+      "type": "Acquisition",
     "status": "Done",
     "target": "24",
     "limit": "27",
@@ -416,7 +427,7 @@
   {
     "id": 47,
     "header": "Version Control Strategy",
-    "type": "Technical content",
+      "type": "Technical content",
     "status": "In Process",
     "target": "15",
     "limit": "18",
@@ -443,7 +454,7 @@
   {
     "id": 50,
     "header": "User Authentication System",
-    "type": "Technical content",
+      "type": "Technical content",
     "status": "Done",
     "target": "28",
     "limit": "31",
@@ -470,7 +481,7 @@
   {
     "id": 53,
     "header": "Network Security Measures",
-    "type": "Technical content",
+      "type": "Technical content",
     "status": "In Process",
     "target": "29",
     "limit": "32",
@@ -497,7 +508,7 @@
   {
     "id": 56,
     "header": "Team Structure and Roles",
-    "type": "Planning",
+      "type": "Technical content",
     "status": "Done",
     "target": "20",
     "limit": "23",
@@ -524,7 +535,7 @@
   {
     "id": 59,
     "header": "Internationalization Support",
-    "type": "Technical content",
+      "type": "Technical content",
     "status": "In Process",
     "target": "23",
     "limit": "26",
@@ -551,7 +562,7 @@
   {
     "id": 62,
     "header": "Code Review Guidelines",
-    "type": "Technical content",
+      "type": "Technical content",
     "status": "Done",
     "target": "12",
     "limit": "15",
@@ -578,7 +589,7 @@
   {
     "id": 65,
     "header": "Feature Prioritization Matrix",
-    "type": "Planning",
+      "type": "Technical content",
     "status": "In Process",
     "target": "19",
     "limit": "22",
@@ -605,7 +616,7 @@
   {
     "id": 68,
     "header": "Service Level Agreements",
-    "type": "Legal",
+      "type": "Legal",
     "status": "Done",
     "target": "26",
     "limit": "29",

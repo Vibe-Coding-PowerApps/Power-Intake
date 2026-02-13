@@ -11,7 +11,7 @@ import {
   SelectValue,
 } from "@/ui/select"
 
-const SERVICES = [
+export const SERVICES = [
   {
     id: "acquisition",
     title: "Acquisition",
