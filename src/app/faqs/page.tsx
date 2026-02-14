@@ -133,7 +133,7 @@ export default function Page() {
   return (
     <div className="@container/main flex min-w-0 flex-1 flex-col gap-4 p-6 overflow-auto" style={{ height: '100vh' }}>
       <div>
-        <h1 className="text-3xl font-semibold">Frequently asked questions.</h1>
+        <h1 className="text-2xl font-semibold">Frequently asked questions.</h1>
         <p className="text-muted-foreground mt-2">Answers about request process, communications, notifications, and support policies.</p>
       </div>
 

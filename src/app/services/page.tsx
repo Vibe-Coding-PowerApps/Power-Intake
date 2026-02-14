@@ -89,54 +89,39 @@ export default function Page() {
   }, [category])
 
   return (
-    <div className="@container/main flex min-w-0 flex-1 flex-col gap-6 p-6">
-      <header className="space-y-3">
-        <h1 className="text-3xl font-semibold">Our Services</h1>
-        <p className="text-muted-foreground max-w-2xl">
-          Discover the right intake for your scenario — from solution design reviews to premium licensing.
-        </p>
-        <div className="flex items-center gap-3">
-          <Button>Log a request</Button>
-          <Button variant="outline">View requests</Button>
-        </div>
-      </header>
-
-      <section className="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
+    <div className="@container/main flex min-w-0 flex-1 flex-col gap-4 p-6">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
         <div>
-          <div className="text-lg font-medium text-muted-foreground">Choose the intake that best matches what you need to do.</div>
+          <h1 className="text-2xl font-semibold">Our Services</h1>
+          <p className="text-muted-foreground mt-2">Discover the right intake for your scenario — from solution design reviews to premium licensing.</p>
         </div>
-
-        <div className="flex gap-3">
-          <Select value={category} onValueChange={setCategory}>
-            <SelectTrigger className="w-48">
-              <span className="text-muted-foreground mr-2">Category</span>
-              <SelectValue placeholder="All" />
-            </SelectTrigger>
-            <SelectContent align="end">
-              <SelectGroup>
-                <SelectLabel>Categories</SelectLabel>
-                <SelectItem value="all">All</SelectItem>
-                {SERVICES.map((s) => (
-                  <SelectItem key={s.id} value={s.id}>
-                    {s.title}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
-      </section>
-
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Select value={category} onValueChange={setCategory}>
+          <SelectTrigger className="w-48">
+            <SelectValue placeholder="All" />
+          </SelectTrigger>
+          <SelectContent align="end">
+            <SelectGroup>
+              <SelectLabel>Categories</SelectLabel>
+              <SelectItem value="all">All</SelectItem>
+              {SERVICES.map((s) => (
+                <SelectItem key={s.id} value={s.id}>
+                  {s.title}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6">
         {filtered.map((s) => (
-          <Card key={s.id} className="group flex flex-col h-full">
-            <CardHeader>
-              <div className="space-y-1.5">
-                  <CardTitle>{s.title}</CardTitle>
-                  <CardDescription>{s.subtitle}</CardDescription>
-                </div>
+          <Card key={s.id} className="@container/card h-full flex flex-col w-full max-w-sm mx-auto dark:bg-zinc-900/50">
+            <CardHeader className="flex flex-col items-start space-y-1.5">
+              <div>
+                <CardTitle className="text-lg mb-1">{s.title}</CardTitle>
+                <CardDescription className="mt-1">{s.subtitle}</CardDescription>
+              </div>
             </CardHeader>
-            <CardContent className="flex-1">
+            <CardContent className="mt-auto pt-0">
               <p className="text-sm text-muted-foreground">{s.description}</p>
             </CardContent>
             <CardFooter>
@@ -144,12 +129,12 @@ export default function Page() {
                 <div className="text-xs text-muted-foreground">{s.estimate}</div>
               </div>
               <CardAction>
-                <Button variant="ghost">{s.cta}</Button>
+                <a href="#" className="text-primary underline text-sm font-medium">{s.cta}</a>
               </CardAction>
             </CardFooter>
           </Card>
         ))}
-      </section>
+      </div>
     </div>
   )
 }
