@@ -213,3 +213,15 @@
   --primary-foreground: 0 0% 100%;
   --sidebar-primary-foreground: 0 0% 100%;
 }
+
+/* Ripple keyframes for button press visual feedback */
+@keyframes ripple {
+  from {
+    opacity: 0.35;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(12);
+  }
+}

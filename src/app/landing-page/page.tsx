@@ -6,6 +6,7 @@ import {
   makeStyles,
   mergeClasses,
 } from "@fluentui/react-components";
+import { Button } from "@/ui/button";
 
 /* =========================================================
    Runtime: NO BLEED global reset
@@ -523,7 +524,7 @@ function GeneratedComponent() {
               for every aspect of your digital transformation.
             </p>
             <div className={classes.leftBottomActions}>
-              <button
+              <Button
                 className={mergeClasses(classes.btn, classes.btnPrimary)}
                 onClick={e => {
                   e.preventDefault();
@@ -534,10 +535,10 @@ function GeneratedComponent() {
                 }}
               >
                 Get Started
-              </button>
-              <button className={mergeClasses(classes.btn, classes.btnSecondary)}>
+              </Button>
+              <Button className={mergeClasses(classes.btn, classes.btnSecondary)}>
                 View Requests
-              </button>
+              </Button>
             </div>
           </div>
           <div style={{ pointerEvents: 'auto', maxWidth: 360, textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', height: '100%' }}>
@@ -552,11 +553,9 @@ function GeneratedComponent() {
               Transform ideas into impact—fast.
             </p>
             <div className={classes.rightBtnRow}>
-              <button
-                className={mergeClasses(classes.btn, classes.btnPrimary)}
-              >
+              <Button className={mergeClasses(classes.btn, classes.btnPrimary)}>
                 Ask us anything
-              </button>
+              </Button>
             </div>
           </div>
         </div>
