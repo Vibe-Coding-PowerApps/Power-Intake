@@ -1,4 +1,5 @@
 import { StrictMode } from 'react'
+console.log('[main.tsx] Script loaded');
 import { createRoot } from 'react-dom/client'
 import { ThemeProvider } from 'next-themes'
 import './index.css'

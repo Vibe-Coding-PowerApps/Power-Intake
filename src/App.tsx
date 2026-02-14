@@ -17,6 +17,7 @@ import ResourcesPage from './app/resources/page'
 import GetHelpPage from './app/get-help/page'
 
 function App() {
+  console.log('[App.tsx] App component rendering');
   const [userData, setUserData] = useState({
     name: 'John Doe',
     email: 'john.doe@example.com',
