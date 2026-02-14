@@ -34,7 +34,7 @@ export default function Page() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-6">
         {filtered.map((res) => (
-          <Card key={res.id} className="h-full flex flex-col w-full max-w-sm mx-auto">
+          <Card key={res.id} className="h-full flex flex-col w-full max-w-sm mx-auto dark:bg-zinc-900/50">
             <CardHeader className="flex flex-col items-start space-y-1.5">
               <div>
                 <CardTitle className="text-lg mb-1">{res.title}</CardTitle>
