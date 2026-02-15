@@ -133,10 +133,10 @@ export default function Page() {
                   <div className="flex gap-4 justify-end">
                     <Button type="button" variant="outline" className="w-auto min-w-[120px]" onClick={handleCancel}>Cancel</Button>
                     {activeTab === "requestDetails" && (
-                      <Button type="button" variant="outline" className="w-auto min-w-[120px]" onClick={() => setActiveTab("applicationDetails")}>Next</Button>
+                      <Button type="button" variant="default" className="w-auto min-w-[120px]" onClick={() => setActiveTab("applicationDetails")}>Next</Button>
                     )}
                     {activeTab === "applicationDetails" && (
-                      <Button type="button" variant="outline" className="w-auto min-w-[120px]" onClick={() => setActiveTab("contactDetails")}>Next</Button>
+                      <Button type="button" variant="default" className="w-auto min-w-[120px]" onClick={() => setActiveTab("contactDetails")}>Next</Button>
                     )}
                     {activeTab === "contactDetails" && (
                       <Button type="submit" className="w-auto min-w-[120px]">Submit</Button>
@@ -180,10 +180,10 @@ export default function Page() {
                   <div className="flex gap-4 justify-end">
                     <Button type="button" variant="outline" className="w-auto min-w-[120px]" onClick={handleCancel}>Cancel</Button>
                     {activeTab === "requestDetails" && (
-                      <Button type="button" variant="outline" className="w-auto min-w-[120px]" onClick={() => setActiveTab("applicationDetails")}>Next</Button>
+                      <Button type="button" variant="default" className="w-auto min-w-[120px]" onClick={() => setActiveTab("applicationDetails")}>Next</Button>
                     )}
                     {activeTab === "applicationDetails" && (
-                      <Button type="button" variant="outline" className="w-auto min-w-[120px]" onClick={() => setActiveTab("contactDetails")}>Next</Button>
+                      <Button type="button" variant="default" className="w-auto min-w-[120px]" onClick={() => setActiveTab("contactDetails")}>Next</Button>
                     )}
                     {activeTab === "contactDetails" && (
                       <Button type="submit" className="w-auto min-w-[120px]">Submit</Button>

@@ -536,7 +536,16 @@ function GeneratedComponent() {
               >
                 Get Started
               </Button>
-              <Button className={mergeClasses(classes.btn, classes.btnSecondary)}>
+              <Button
+                className={mergeClasses(classes.btn, classes.btnSecondary)}
+                onClick={e => {
+                  e.preventDefault();
+                  if (window.location.pathname !== "/use-cases") {
+                    window.history.pushState({}, "", "/use-cases");
+                    window.dispatchEvent(new Event('locationchange'));
+                  }
+                }}
+              >
                 View Requests
               </Button>
             </div>
