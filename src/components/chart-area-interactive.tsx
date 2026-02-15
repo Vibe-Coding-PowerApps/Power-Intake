@@ -176,10 +176,10 @@ export function ChartAreaInteractive() {
     <Card className="@container/card dark:bg-zinc-900/50">
       <CardHeader>
         <div className="space-y-1.5">
-          <CardTitle>Total Visitors</CardTitle>
+          <CardTitle>Total Requests</CardTitle>
           <CardDescription>
             <span className="hidden @[540px]/card:block">
-              Total for the last 3 months
+              Requests for the last 3 months
             </span>
             <span className="@[540px]/card:hidden">Last 3 months</span>
           </CardDescription>
