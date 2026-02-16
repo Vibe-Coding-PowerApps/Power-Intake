@@ -73,16 +73,16 @@ export default function Page() {
   };
 
   return (
-    <div className="@container/main flex min-w-0 flex-1 flex-col gap-2 p-6">
+    <div className="@container/main flex min-w-0 flex-1 flex-col gap-2">
       {!showForm ? (
         <>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 p-6">
             <h1 className="text-2xl font-semibold">Use Cases</h1>
             <Button className="w-auto min-w-[160px]" onClick={() => setShowForm(true)}>
               New Intake Request
             </Button>
           </div>
-          <div className="mt-4">
+          <div className="mt-4 pb-6">
             <DataTable data={dashboardData} />
           </div>
         </>
