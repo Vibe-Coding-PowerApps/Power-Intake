@@ -80,6 +80,7 @@ export const SERVICES = [
 
 export default function Page() {
   const [category, setCategory] = React.useState("")
+  // No Next.js router; use window.location for navigation
 
   const filtered = React.useMemo(() => {
     return SERVICES.filter((s) => {
@@ -129,7 +130,15 @@ export default function Page() {
                 <div className="text-xs text-muted-foreground">{s.estimate}</div>
               </div>
               <CardAction>
-                <a href="#" className="text-primary underline text-sm font-medium">{s.cta}</a>
+                <button
+                  type="button"
+                  className="text-primary underline text-sm font-medium bg-transparent border-0 p-0 m-0 cursor-pointer"
+                  onClick={() => {
+                    window.location.href = `/use-cases?service=${encodeURIComponent(s.title)}`;
+                  }}
+                >
+                  {s.cta}
+                </button>
               </CardAction>
             </CardFooter>
           </Card>

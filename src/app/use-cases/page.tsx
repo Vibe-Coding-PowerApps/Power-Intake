@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DataTable } from "../../components/data-table";
 import { Button } from "@/ui/button";
 import { Input } from "@/ui/input";
@@ -52,6 +52,22 @@ export default function Page() {
   const [activeTab, setActiveTab] = useState<string>("requestDetails");
   const [service, setService] = useState<string>(serviceTypes[0]?.value || "");
   const [form, setForm] = useState<Record<string, string | undefined>>({});
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const serviceParam = params.get("service");
+      if (serviceParam) {
+        // Case-insensitive, trimmed match
+        const found = serviceTypes.find((s) => s.label.trim().toLowerCase() === serviceParam.trim().toLowerCase());
+        if (found) {
+          setService(found.label);
+          setForm((prev) => ({ ...prev, serviceType: found.label }));
+          setShowForm(true);
+        }
+      }
+    }
+  }, []);
 
   const handleChange = (name: string, value: string) => {
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -107,21 +123,42 @@ export default function Page() {
                     {tabFields.requestDetails.filter(f => f.name !== "description").map((field) => (
                       <div key={field.name} className="flex items-start gap-x-2">
                         <Label htmlFor={field.name} className="text-sm font-medium w-48 break-words">{field.label}</Label>
-                        {field.type === "select" ? (
-                          <Select
-                            value={form[field.name] || field.options?.[0] || ""}
-                            onValueChange={(value) => handleChange(field.name, value)}
-                          >
-                            <SelectTrigger id={field.name} className="w-80">
-                              <SelectValue placeholder={field.label} />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {field.options?.map((option) => (
-                                <SelectItem key={option} value={option}>{option}</SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        ) : (
+                        {field.type === "select"
+                          ? field.name === "serviceType"
+                            ? (
+                                <Select
+                                  value={service}
+                                  onValueChange={(value) => {
+                                    setService(value);
+                                    handleChange(field.name, value);
+                                  }}
+                                >
+                                  <SelectTrigger id={field.name} className="w-80">
+                                    <SelectValue placeholder={field.label} />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    {field.options?.map((option) => (
+                                      <SelectItem key={option} value={option}>{option}</SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                              )
+                            : (
+                                <Select
+                                  value={form[field.name] || field.options?.[0] || ""}
+                                  onValueChange={(value) => handleChange(field.name, value)}
+                                >
+                                  <SelectTrigger id={field.name} className="w-80">
+                                    <SelectValue placeholder={field.label} />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    {field.options?.map((option) => (
+                                      <SelectItem key={option} value={option}>{option}</SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                              )
+                          : (
                           <Input
                             id={field.name}
                             required={field.required}
