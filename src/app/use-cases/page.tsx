@@ -83,7 +83,7 @@ export default function Page() {
             </Button>
           </div>
           <div className="mt-4 pb-6">
-            <DataTable data={dashboardData} />
+            <DataTable data={dashboardData} meta={{ setShowForm }} />
           </div>
         </>
       ) : (
