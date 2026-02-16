@@ -22,26 +22,26 @@ interface Field {
 const tabFields: Record<string, Field[]> = {
   requestDetails: [
     { label: "What is the title of your request?", name: "title", required: true },
-    { label: "What type of service do you need?", name: "serviceType", required: true, type: "select", options: serviceTypes.map(s => s.label) },
+    { label: "What type of service do you need?", name: "serviceType", required: true, type: "select", options: ["---", ...serviceTypes.map(s => s.label)] },
     { label: "Which products are involved?", name: "products", required: true },
     { label: "What features are required (if any)?", name: "features" },
     { label: "What connector will you use?", name: "connector" },
     { label: "Can you describe your requirements?", name: "description", required: true, multiline: true },
   ],
   applicationDetails: [
-    { label: "Are you processing personal data?", name: "processingPersonalData", required: true, type: "select", options: ["Yes", "No"] },
-    { label: "Are you processing or storing client data?", name: "processingClientData", required: true, type: "select", options: ["Yes", "No"] },
+    { label: "Are you processing personal data?", name: "processingPersonalData", required: true, type: "select", options: ["---", "Yes", "No"] },
+    { label: "Are you processing or storing client data?", name: "processingClientData", required: true, type: "select", options: ["---", "Yes", "No"] },
     { label: "What is your AIR ID?", name: "airId" },
     { label: "What are your current data sources?", name: "currentDataSources", required: true },
-    { label: "Is this a new or existing application?", name: "newOrExistingApp", required: true, type: "select", options: ["New", "Existing"] },
-    { label: "Where are your expected users located?", name: "expectedUserLocation", required: true, type: "select", options: ["Global", "Regional", "Other"] },
+    { label: "Is this a new or existing application?", name: "newOrExistingApp", required: true, type: "select", options: ["---", "New", "Existing"] },
+    { label: "Where are your expected users located?", name: "expectedUserLocation", required: true, type: "select", options: ["---", "Global", "Regional", "Other"] },
   ],
   contactDetails: [
-    { label: "Who is the primary contact?", name: "primaryContact", required: true },
-    { label: "Who is the secondary contact?", name: "secondaryContact", required: true },
-    { label: "Who is the manager or sponsor?", name: "managerSponsor" },
-    { label: "Is this for a dedicated customer?", name: "dedicatedCustomer", required: true, type: "select", options: ["Dedicated Customer", "Not a Dedicated Customer"] },
-    { label: "Which entity is responsible?", name: "responsibleEntity", required: true, type: "select", options: ["Technology", "Business", "Other"] },
+    { label: "Please enter the display name of the primary contact for this request.", name: "primaryContact", required: true },
+    { label: "Please enter the display name of the secondary contact for this request.", name: "secondaryContact", required: true },
+    { label: "Please enter the display name of the manager or sponsor responsible for this request.", name: "managerSponsor" },
+    { label: "Is this for a dedicated customer?", name: "dedicatedCustomer", required: true, type: "select", options: ["---", "Dedicated Customer", "Not a Dedicated Customer"] },
+    { label: "Which entity is responsible?", name: "responsibleEntity", required: true, type: "select", options: ["---", "Technology", "Business", "Other"] },
     { label: "What is the business unit?", name: "businessUnit", type: "select", options: ["---", "Unit 1", "Unit 2"] },
     { label: "How did you hear about us?", name: "referralSource", required: true },
   ],
@@ -102,35 +102,49 @@ export default function Page() {
             </TabsList>
             <div className="min-h-[400px]">
               <TabsContent value="requestDetails">
-                <form className="space-y-6 text-left" onSubmit={handleSubmit}>
+                <form className="flex flex-col min-h-[600px] space-y-6 text-left" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
-                    {tabFields.requestDetails.map((field) => (
-                      field.multiline ? (
-                        <div key={field.name} className="flex flex-col gap-2 max-w-2xl md:col-span-2 md:max-w-2xl">
-                          <Label htmlFor={field.name} className="text-sm font-medium">{field.label}</Label>
-                          <textarea
-                            id={field.name}
-                            required={field.required}
-                            value={form[field.name] || ""}
-                            onChange={(e) => handleChange(field.name, e.target.value)}
-                            className="w-full h-24 border rounded px-2 py-1 text-sm"
-                          />
-                        </div>
-                      ) : (
-                        <div key={field.name} className="flex flex-col gap-2 max-w-md">
-                          <Label htmlFor={field.name} className="text-sm font-medium">{field.label}</Label>
+                    {tabFields.requestDetails.filter(f => f.name !== "description").map((field) => (
+                      <div key={field.name} className="flex items-start gap-x-2">
+                        <Label htmlFor={field.name} className="text-sm font-medium w-48 break-words">{field.label}</Label>
+                        {field.type === "select" ? (
+                          <Select
+                            value={form[field.name] || field.options?.[0] || ""}
+                            onValueChange={(value) => handleChange(field.name, value)}
+                          >
+                            <SelectTrigger id={field.name} className="w-80">
+                              <SelectValue placeholder={field.label} />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {field.options?.map((option) => (
+                                <SelectItem key={option} value={option}>{option}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        ) : (
                           <Input
                             id={field.name}
                             required={field.required}
                             value={form[field.name] || ""}
                             onChange={(e) => handleChange(field.name, e.target.value)}
-                            className="text-sm"
+                            className="text-sm w-80"
                           />
-                        </div>
-                      )
+                        )}
+                      </div>
                     ))}
                   </div>
-                  <div className="flex gap-4 justify-end">
+                  {/* Description field full width */}
+                  <div className="mt-6 flex items-start gap-x-2">
+                    <Label htmlFor="description" className="text-sm font-medium w-48 break-words pt-1">Can you describe your requirements?</Label>
+                    <textarea
+                      id="description"
+                      required={tabFields.requestDetails.find(f => f.name === "description")?.required}
+                      value={form["description"] || ""}
+                      onChange={(e) => handleChange("description", e.target.value)}
+                      className="min-h-[120px] border rounded px-2 py-1 text-sm w-[600px] max-w-full"
+                    />
+                  </div>
+                  <div className="mt-auto flex gap-4 justify-end bg-background pt-4 pb-4 px-6 border-t z-10">
                     <Button type="button" variant="outline" className="w-auto min-w-[120px]" onClick={handleCancel}>Cancel</Button>
                     {activeTab === "requestDetails" && (
                       <Button type="button" variant="default" className="w-auto min-w-[120px]" onClick={() => setActiveTab("applicationDetails")}>Next</Button>
@@ -145,39 +159,48 @@ export default function Page() {
                 </form>
               </TabsContent>
               <TabsContent value="applicationDetails">
-                <form className="space-y-6 text-left" onSubmit={handleSubmit}>
+                <form className="flex flex-col min-h-[600px] space-y-6 text-left" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
                     {tabFields.applicationDetails.map((field) => (
-                      field.type === "file" ? (
-                        <div key={field.name} className="flex flex-col gap-2 col-span-2">
-                          <Label htmlFor={field.name}>{field.label}</Label>
-                          <input type="file" id={field.name} />
-                        </div>
-                      ) : field.type === "date" ? (
-                        <div key={field.name} className="flex flex-col gap-2">
-                          <Label htmlFor={field.name}>{field.label}</Label>
+                      <div key={field.name} className="flex items-start gap-x-2">
+                        <Label htmlFor={field.name} className="text-sm font-medium w-48 break-words">{field.label}</Label>
+                        {field.type === "file" ? (
+                          <input type="file" id={field.name} className="w-80" />
+                        ) : field.type === "date" ? (
                           <Input
                             id={field.name}
                             type="date"
                             value={form[field.name] || ""}
                             onChange={(e) => handleChange(field.name, e.target.value)}
+                            className="text-sm w-80"
                           />
-                        </div>
-                      ) : (
-                        <div key={field.name} className="flex flex-col gap-2 max-w-md">
-                          <Label htmlFor={field.name} className="text-sm font-medium">{field.label}</Label>
+                        ) : field.type === "select" ? (
+                          <Select
+                            value={form[field.name] || field.options?.[0] || ""}
+                            onValueChange={(value) => handleChange(field.name, value)}
+                          >
+                            <SelectTrigger id={field.name} className="w-80">
+                              <SelectValue placeholder={field.label} />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {field.options?.map((option) => (
+                                <SelectItem key={option} value={option}>{option}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        ) : (
                           <Input
                             id={field.name}
                             required={field.required}
                             value={form[field.name] || ""}
                             onChange={(e) => handleChange(field.name, e.target.value)}
-                            className="text-sm"
+                            className="text-sm w-80"
                           />
-                        </div>
-                      )
+                        )}
+                      </div>
                     ))}
                   </div>
-                  <div className="flex gap-4 justify-end">
+                  <div className="mt-auto flex gap-4 justify-end bg-background pt-4 pb-4 px-6 border-t z-10">
                     <Button type="button" variant="outline" className="w-auto min-w-[120px]" onClick={handleCancel}>Cancel</Button>
                     {activeTab === "requestDetails" && (
                       <Button type="button" variant="default" className="w-auto min-w-[120px]" onClick={() => setActiveTab("applicationDetails")}>Next</Button>
@@ -192,7 +215,7 @@ export default function Page() {
                 </form>
               </TabsContent>
               <TabsContent value="contactDetails">
-                <form className="space-y-6 text-left" onSubmit={handleSubmit}>
+                <form className="flex flex-col min-h-[600px] space-y-6 text-left" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
                     {tabFields.contactDetails.map((field) => (
                       field.multiline ? (
@@ -206,21 +229,38 @@ export default function Page() {
                             className="w-full h-24 border rounded px-2 py-1 text-sm"
                           />
                         </div>
+                      ) : field.type === "select" ? (
+                        <div key={field.name} className="flex items-start gap-x-2">
+                          <Label htmlFor={field.name} className="text-sm font-medium w-48 break-words">{field.label}</Label>
+                          <Select
+                            value={form[field.name] || field.options?.[0] || ""}
+                            onValueChange={(value) => handleChange(field.name, value)}
+                          >
+                            <SelectTrigger id={field.name} className="w-80">
+                              <SelectValue placeholder={field.label} />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {field.options?.map((option) => (
+                                <SelectItem key={option} value={option}>{option}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
                       ) : (
-                        <div key={field.name} className="flex flex-col gap-2 max-w-md">
-                          <Label htmlFor={field.name} className="text-sm font-medium">{field.label}</Label>
+                        <div key={field.name} className="flex items-start gap-x-2">
+                          <Label htmlFor={field.name} className="text-sm font-medium w-48 break-words">{field.label}</Label>
                           <Input
                             id={field.name}
                             required={field.required}
                             value={form[field.name] || ""}
                             onChange={(e) => handleChange(field.name, e.target.value)}
-                            className="text-sm"
+                            className="text-sm w-80"
                           />
                         </div>
                       )
                     ))}
                   </div>
-                  <div className="flex gap-4 justify-end">
+                  <div className="mt-auto flex gap-4 justify-end bg-background pt-4 pb-4 px-6 border-t z-10">
                     <Button type="button" variant="outline" className="w-auto min-w-[120px]" onClick={handleCancel}>Cancel</Button>
                     <Button type="submit" className="w-auto min-w-[120px]">Submit</Button>
                   </div>
