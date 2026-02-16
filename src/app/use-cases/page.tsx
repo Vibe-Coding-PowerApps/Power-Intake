@@ -23,7 +23,7 @@ const tabFields: Record<string, Field[]> = {
   requestDetails: [
     { label: "What is the title of your request?", name: "title", required: true },
     { label: "What type of service do you need?", name: "serviceType", required: true, type: "select", options: ["---", ...serviceTypes.map(s => s.label)] },
-    { label: "Which products are involved?", name: "products", required: true },
+    { label: "Which products are involved?", name: "products", required: true, type: "select", options: ["---", "AI Builder", "Copilot Studio", "Power Apps", "Power Automate", "Power BI", "Power Pages"] },
     { label: "What features are required (if any)?", name: "features" },
     { label: "What connector will you use?", name: "connector" },
     { label: "Can you describe your requirements?", name: "description", required: true, multiline: true },
