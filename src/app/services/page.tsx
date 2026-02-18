@@ -1,4 +1,5 @@
 import * as React from "react"
+import { ClientNav } from "@/components/client-nav"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardAction } from "@/ui/card"
 import { Button } from "@/ui/button"
 import {
@@ -130,15 +131,12 @@ export default function Page() {
                 <div className="text-xs text-muted-foreground">{s.estimate}</div>
               </div>
               <CardAction>
-                <button
-                  type="button"
+                <ClientNav
+                  href={`/use-cases?service=${encodeURIComponent(s.title)}`}
                   className="text-primary underline text-sm font-medium bg-transparent border-0 p-0 m-0 cursor-pointer"
-                  onClick={() => {
-                    window.location.href = `/use-cases?service=${encodeURIComponent(s.title)}`;
-                  }}
                 >
                   {s.cta}
-                </button>
+                </ClientNav>
               </CardAction>
             </CardFooter>
           </Card>
